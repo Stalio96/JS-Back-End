@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Do not forget to change the path to the css file -->
+    <title>{{title}}</title>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="box">
+
+        <nav>
+            <a href="/">Home</a>
+            <ul>
+                <!-- Guest users and Logged users -->
+                <li><a href="/rent">Housing for rent</a></li>
+                <!-- Guest users -->
+                {{#if hasUser}}
+                <li><a href="/create">Create offer</a></li>
+                <li><a href="/search">Search</a></li>
+                <li><a href="/logout">Logout</a></li>
+                {{else}}
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+                {{/if}}
+                
+            </ul>
+        </nav>
+        <main>
+            {{#if errors}}
+            <div>
+                {{#each errors}}
+                <div class="errorContainer">
+                    <p>{{msg}}</p>
+                </div>
+                {{/each}}
+            </div>
+            {{/if}}
+            
+
+            {{{body}}}
+        </main>
+        <footer>
+            © 2021
+        </footer>
+    </div>
+
+</body>
+
+</html>
